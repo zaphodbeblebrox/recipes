@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {{ bootstrap.load_css()}}
+</head>
+
+<body>
+<div class="container">
+    <div class="d-flex flex-row justify-content-between">
+        <h1>Welcome, {{user.first_name}}</h1>
+        <div class="links">
+            <a href="/dashboard">back to recipes</a>
+            <a href="/logout">Logout</a>
+        </div>
+    </div>
+    <div class="name d-flex flex-row justify-content-around">
+        <h2>{{recipe.name}}</h2>
+        <p>Posted by: {{recipe.first_name}}</p>
+    </div>
+    
+    <div class="recipe border border-3 border-dark">
+        <p>Description: {{recipe.description}}</p>
+        <p>Under 30 Minutes? {{recipe.under_30_min}}</p>
+        <p>Instructions: {{recipe.instructions}}</p>
+        <p>Date Made: {{recipe.date_cooked}}</p>
+    </div>
+</div>
+</body>
+
+</html>

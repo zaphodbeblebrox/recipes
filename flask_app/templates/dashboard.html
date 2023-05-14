@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {{ bootstrap.load_css()}}
+</head>
+
+<body>
+    <h1>Welcome, {{user.username}}</h1>
+    <div class="d-flex flex-row justify-content-between">
+        <h3>All posted recipes:</h3>
+        <div class="links">
+            <a href="/recipes/new">+ Create</a>
+            <a href="/logout">Logout</a>
+        </div>
+    </div>
+    
+    <table class="table table-dark">
+        <tr>
+            <th>Name</th>
+            <th>Under 30 Min</th>
+            <th>Posted by</th>
+            <th>Actions</th>
+        </tr>
+        {% for recipe in all_recipes: %}
+            <tr>
+                <td>{{recipe.name}}</td>
+                <td>{{recipe.under_30_min}}</td>
+                <td>{{recipe.first_name}}</td>
+                <td>
+                    <a href="/recipes/{{recipe.id}}">View</a>
+                    {% if recipe.user_id == user.id %}
+                        <a href="/recipes/edit/{{recipe.id}}">Edit</a>
+                        <a href="/recipes/delete/{{recipe.id}}">Delete</a>
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+</body>
+
+</html>
